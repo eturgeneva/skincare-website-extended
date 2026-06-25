@@ -1,145 +1,320 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>PureGlow</title>
-        <link rel="stylesheet" type="text/css" href="./resources/css/style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/b5e2ac5d19.js" crossorigin="anonymous"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PureGlow — a concept skincare experience and UX/UI portfolio project.">
+  <title>PureGlow — Intentional skincare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./resources/css/style.css">
+  <script src="./resources/js/app.js" defer></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <body>
-        <!-- Nav Bar -->
-        <header>
-            <nav>
-                <div class="company logo">
-                    <h1><a href="#">PureGlow</a></h1>
-                </div>
-                
-                <div class="navbar">
-                    <div class="navigation desktop">
-                        <ul>
-                            <li><a href="#promo">News</a></li>
-                            <li><a href="#products">Products</a></li>
-                            <li><a href="#">About</a></li>
-                        </ul>
-                    </div>
-                    <div class="navigation icons">
-                        <ul>
-                            <li><a href="#"><img src="./resources/icons/magnifying-glass-solid.svg"></a></li>
-                            <li><a href="#"><img src="./resources/icons/user-solid.svg"></a></li>
-                            <li><a href="#"><img src="./resources/icons/cart-shopping-solid.svg"></a></li>
-                            <!-- Burger icon only on mobile!-->
-                            <li class="burger"><a href="#"><img src="./resources/icons/bars-solid.svg"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+  <div class="announcement">
+    <p>Complimentary mini ritual with every collection</p>
+    <button class="announcement__close" type="button" aria-label="Dismiss announcement">×</button>
+  </div>
 
-        <main>
-            <!-- Promo banner / News -->
-            <div class="promo section" id="promo">
-                <h2>New Collection</h2>
-                <!-- <img src="./resources/images/promo_1920x1080.jpg"> -->
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="wordmark" href="./index.html" aria-label="PureGlow home">PureGlow</a>
+      <div class="nav__links">
+        <a href="#bestsellers">Bestsellers</a>
+        <a href="#concerns">Skin concerns</a>
+        <a href="#journal">Journal</a>
+        <a href="./case-study.html">Design story</a>
+      </div>
+      <div class="nav__actions">
+        <button class="icon-button" type="button" data-open-search aria-label="Search">
+          <svg aria-hidden="true"><use href="#icon-search"></use></svg>
+        </button>
+        <button class="icon-button" type="button" data-open-wishlist aria-label="Wishlist">
+          <svg aria-hidden="true"><use href="#icon-heart"></use></svg>
+          <span class="count" data-wishlist-count hidden>0</span>
+        </button>
+        <button class="icon-button" type="button" data-open-cart aria-label="Shopping bag">
+          <svg aria-hidden="true"><use href="#icon-bag"></use></svg>
+          <span class="count" data-cart-count hidden>0</span>
+        </button>
+        <button class="icon-button nav__menu" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+          <svg aria-hidden="true"><use href="#icon-menu"></use></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
 
-                <!-- Button -->
-                <div class="button">
-                    <a href="#">View more</a>
-                </div>
+  <main id="main">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero__media">
+        <img src="./resources/images/promo_1920x1080.jpg" alt="PureGlow green skincare collection arranged in a calm bathroom setting">
+      </div>
+      <div class="hero__content reveal">
+        <p class="eyebrow">The daily ritual · 01</p>
+        <h1 id="hero-title">Quiet formulas.<br>Visible radiance.</h1>
+        <p>Considered skincare designed to work with your skin, not against it.</p>
+        <a class="button button--light" href="#bestsellers">Explore the collection</a>
+      </div>
+      <p class="hero__caption">Plant-led · Fragrance-free · Made with intention</p>
+    </section>
+
+    <section class="manifesto section shell reveal">
+      <div>
+        <p class="eyebrow">Our philosophy</p>
+        <h2>Skincare should feel<br>personal, never complicated.</h2>
+      </div>
+      <div class="manifesto__copy">
+        <p>PureGlow pairs purposeful actives with sensorial textures to create routines that are effective, intuitive and easy to return to.</p>
+        <a class="text-link" href="#routine">Find your ritual <span>↗</span></a>
+      </div>
+    </section>
+
+    <section class="section products-section" id="bestsellers" aria-labelledby="bestsellers-title">
+      <div class="section-heading shell reveal">
+        <div>
+          <p class="eyebrow">Most loved</p>
+          <h2 id="bestsellers-title">Daily essentials</h2>
+        </div>
+        <p>Three focused formulas. One uncomplicated routine.</p>
+      </div>
+      <div class="product-grid shell">
+        <article class="product-card reveal" data-product-card data-name="Radiance Revive Serum" data-category="Serum" data-concern="Dullness" data-price="58" data-image="./resources/images/custom-blended-moisture-building-essence.jpg">
+          <a class="product-card__media" href="./product.html">
+            <span class="badge">Bestseller</span>
+            <img class="product-card__primary" src="./resources/images/custom-blended-moisture-building-essence.jpg" alt="Radiance Revive Serum">
+            <img class="product-card__secondary" src="./resources/images/mtm_labo_pdt_texture_1680x1296_20210422_custom-blended-moisture-building-essence.jpg" alt="">
+          </a>
+          <div class="product-card__meta">
+            <div>
+              <p class="product-card__type">Serum · 30 ml</p>
+              <h3><a href="./product.html">Radiance Revive Serum</a></h3>
+              <p>Brightens, hydrates and supports an even tone.</p>
             </div>
+            <p class="product-card__price">$58</p>
+          </div>
+          <div class="product-card__actions">
+            <button class="button button--dark button--small" type="button" data-add-cart>Add to bag</button>
+            <button class="heart-button" type="button" data-wishlist aria-label="Save Radiance Revive Serum">
+              <svg aria-hidden="true"><use href="#icon-heart"></use></svg>
+            </button>
+          </div>
+        </article>
 
-            <!-- Products / Bestsellers -->
-            <h2 id="products">Bestsellers</h2>
-            <div class="bestsellers section">
-                <!-- <h2>Bestsellers</h2> -->
-                <div class="product container serum">
-                    <div class="product photo">
-                        <a href="./product.html"><img src="./resources/images/custom-blended-moisture-building-essence.jpg"></a>
-                    </div>
-                    <div class="product description">
-                        <h3><a href="./product.html">Radiance Revive Serum</a></h3>
-                        <p><a href="./product.html">Deeply repairing, reducing wrinkles, firming</a></p>
-                    </div>
-                    <div class="button">
-                        <a href="./product.html">Shop Now</a>
-                    </div>
-                </div>
-
-                <div class="product container cleanser">
-                    <div class="product photo">
-                        <a href="#"><img src="./resources/images/custom-blended-milk-cleanser.jpg"></a>
-                    </div>
-                    <div class="product description">
-                        <h3>Radiance Revive Cleanser</h3>
-                        <p>Cleansing, nourishing, removes make-up</p>
-                    </div>
-                    <div class="button">
-                        <a href="#">Shop Now</a>
-                    </div>
-                </div>
-
-                <div class="product container cream">
-                    <div class="product photo">
-                        <a href="#"><img src="./resources/images/custom-blended-conditioning-cream.jpg"></a>
-                    </div>
-                    <div class="product description">
-                        <h3>Radiance Revive Cream</h3>
-                        <p>Anti-oxidant, moisturizing, improves elasticity</p>
-                    </div>
-                    <div class="button">
-                        <a href="#">Shop Now</a>
-                    </div>
-                </div>
+        <article class="product-card reveal" data-product-card data-name="Radiance Revive Cleanser" data-category="Cleanser" data-concern="Sensitivity" data-price="42" data-image="./resources/images/custom-blended-milk-cleanser.jpg">
+          <a class="product-card__media" href="./product.html">
+            <span class="badge">New</span>
+            <img class="product-card__primary" src="./resources/images/custom-blended-milk-cleanser.jpg" alt="Radiance Revive Cleanser">
+            <img class="product-card__secondary" src="./resources/images/mtm_labo_pdt_texture_1680x1296_20210422_custom-blended-milk-cleanser.jpg" alt="">
+          </a>
+          <div class="product-card__meta">
+            <div>
+              <p class="product-card__type">Cleanser · 120 ml</p>
+              <h3><a href="./product.html">Radiance Revive Cleanser</a></h3>
+              <p>Melts makeup while preserving the skin barrier.</p>
             </div>
-            
-            <!-- Company values-->
-            <div class="values section">
-                <div class="value cruelty">
-                    <img src="./resources/icons/Brand_Values-01.svg">
-                    <h3>Cruelty Free</h3>
-                </div>
+            <p class="product-card__price">$42</p>
+          </div>
+          <div class="product-card__actions">
+            <button class="button button--dark button--small" type="button" data-add-cart>Add to bag</button>
+            <button class="heart-button" type="button" data-wishlist aria-label="Save Radiance Revive Cleanser">
+              <svg aria-hidden="true"><use href="#icon-heart"></use></svg>
+            </button>
+          </div>
+        </article>
 
-                <div class="value vegan">
-                    <img src="./resources/icons/Brand_Values-02.svg">
-                    <h3>Vegan</h3>
-                </div>
-
-                <div class="value fragrance">
-                    <img src="./resources/icons/Brand_Values-03.svg">
-                    <h3>Fragrance Free</h3>
-                </div>
+        <article class="product-card reveal" data-product-card data-name="Radiance Revive Cream" data-category="Moisturizer" data-concern="Dryness" data-price="64" data-image="./resources/images/custom-blended-conditioning-cream.jpg">
+          <a class="product-card__media" href="./product.html">
+            <img class="product-card__primary" src="./resources/images/custom-blended-conditioning-cream.jpg" alt="Radiance Revive Cream">
+            <img class="product-card__secondary" src="./resources/images/mtm_labo_pdt_texture_1680x1296_20210422_custom-blended-conditioning-cream.jpg" alt="">
+          </a>
+          <div class="product-card__meta">
+            <div>
+              <p class="product-card__type">Moisturizer · 50 ml</p>
+              <h3><a href="./product.html">Radiance Revive Cream</a></h3>
+              <p>Replenishes moisture and improves elasticity.</p>
             </div>
+            <p class="product-card__price">$64</p>
+          </div>
+          <div class="product-card__actions">
+            <button class="button button--dark button--small" type="button" data-add-cart>Add to bag</button>
+            <button class="heart-button" type="button" data-wishlist aria-label="Save Radiance Revive Cream">
+              <svg aria-hidden="true"><use href="#icon-heart"></use></svg>
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
 
-        </main>
+    <section class="editorial section shell">
+      <div class="editorial__image reveal">
+        <img src="./resources/images/mtm_cover-scaled.jpg" alt="A serene facial treatment in a warm studio">
+      </div>
+      <div class="editorial__content reveal">
+        <p class="eyebrow">A considered approach</p>
+        <h2>Made for skin in motion.</h2>
+        <p>Skin changes with seasons, stress, sleep and time. Our modular approach lets you adapt without starting over.</p>
+        <dl class="editorial__facts">
+          <div><dt>01</dt><dd>Targeted essentials</dd></div>
+          <div><dt>02</dt><dd>Barrier-minded formulas</dd></div>
+          <div><dt>03</dt><dd>Rituals that flex with you</dd></div>
+        </dl>
+        <a class="text-link" href="./case-study.html">Discover the design story <span>↗</span></a>
+      </div>
+    </section>
 
-        <!-- Submit Form maybe -->
+    <section class="concerns section" id="concerns" aria-labelledby="concerns-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Start with your skin</p>
+            <h2 id="concerns-title">Shop by concern</h2>
+          </div>
+        </div>
+        <div class="concern-grid">
+          <a href="#routine" class="concern-card reveal"><span>01</span><h3>Dullness</h3><p>Restore clarity and glow</p><b>→</b></a>
+          <a href="#routine" class="concern-card reveal"><span>02</span><h3>Dryness</h3><p>Replenish and strengthen</p><b>→</b></a>
+          <a href="#routine" class="concern-card reveal"><span>03</span><h3>Sensitivity</h3><p>Comfort and calm</p><b>→</b></a>
+          <a href="#routine" class="concern-card reveal"><span>04</span><h3>Texture</h3><p>Smooth and refine</p><b>→</b></a>
+        </div>
+      </div>
+    </section>
 
-        <!-- Footer -->
-        <footer>
-            <div class="footer left">
-                <div class="company logo">
-                    <h1>PureGlow</h1>
-                </div>
+    <section class="routine section shell" id="routine" aria-labelledby="routine-title">
+      <div class="routine__intro reveal">
+        <p class="eyebrow">Interactive consultation</p>
+        <h2 id="routine-title">Build your ritual.</h2>
+        <p>Answer two quick questions for a tailored morning and evening edit. Your result stays on this device.</p>
+        <div class="routine__progress" aria-label="Routine finder progress">
+          <span class="active"></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="routine__panel reveal" data-routine>
+        <div class="routine-step active" data-step="1">
+          <p class="step-label">Question 01 / 02</p>
+          <h3>What would you most like to improve?</h3>
+          <div class="option-grid">
+            <button type="button" data-routine-answer="concern" data-value="dullness">Dullness</button>
+            <button type="button" data-routine-answer="concern" data-value="dryness">Dryness</button>
+            <button type="button" data-routine-answer="concern" data-value="sensitivity">Sensitivity</button>
+            <button type="button" data-routine-answer="concern" data-value="texture">Uneven texture</button>
+          </div>
+        </div>
+        <div class="routine-step" data-step="2" hidden>
+          <p class="step-label">Question 02 / 02</p>
+          <h3>How does your skin usually feel by midday?</h3>
+          <div class="option-grid">
+            <button type="button" data-routine-answer="skin" data-value="dry">Tight or dry</button>
+            <button type="button" data-routine-answer="skin" data-value="balanced">Comfortable</button>
+            <button type="button" data-routine-answer="skin" data-value="combination">Mixed</button>
+            <button type="button" data-routine-answer="skin" data-value="oily">Shiny</button>
+          </div>
+        </div>
+        <div class="routine-step routine-result" data-step="3" hidden>
+          <p class="step-label">Your PureGlow edit</p>
+          <h3>A calm, brightening ritual.</h3>
+          <div class="routine-result__products">
+            <div><span>AM · 01</span><b>Milk Cleanser</b><p>Begin without stripping.</p></div>
+            <div><span>AM/PM · 02</span><b>Revive Serum</b><p>Target your primary concern.</p></div>
+            <div><span>PM · 03</span><b>Conditioning Cream</b><p>Seal in comfort.</p></div>
+          </div>
+          <div class="routine-result__actions">
+            <button class="button button--dark" type="button" data-add-routine>Add ritual to bag · $164</button>
+            <button class="text-button" type="button" data-routine-reset>Start again</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                <div class="social media">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </div>
+    <section class="ingredient section">
+      <div class="ingredient__image reveal">
+        <img src="./resources/images/mtm_labo_pdt_texture_1680x1296_20210422_custom-blended-moisture-building-essence.jpg" alt="A drop of clear hydrating serum">
+      </div>
+      <div class="ingredient__content reveal">
+        <p class="eyebrow">Ingredient focus · Hyaluronic acid</p>
+        <h2>Small molecule.<br>Deep hydration.</h2>
+        <p>A humectant that helps draw water into the skin, supporting a plumper, smoother-looking surface without heaviness.</p>
+        <div class="ingredient__metrics">
+          <div><strong>3×</strong><span>molecular weights</span></div>
+          <div><strong>24h</strong><span>comfort claim*</span></div>
+        </div>
+        <p class="fine-print">*Concept demonstration content for this portfolio project.</p>
+      </div>
+    </section>
 
-            <div class="footer right">
-                <ul>
-                    <li>Stores</li>
-                    <li>Terms of Service</li>
-                    <li>FAQs</li>
-                    <li>Contact Us</li>
-                </ul>
-            </div>
-        </footer>
+    <section class="values section shell" aria-label="Brand values">
+      <article class="reveal"><img src="./resources/icons/Brand_Values-01.svg" alt=""><h3>Cruelty free</h3><p>Never tested on animals.</p></article>
+      <article class="reveal"><img src="./resources/icons/Brand_Values-02.svg" alt=""><h3>Vegan formulas</h3><p>Made without animal-derived ingredients.</p></article>
+      <article class="reveal"><img src="./resources/icons/Brand_Values-03.svg" alt=""><h3>Fragrance free</h3><p>Thoughtful care for sensitive skin.</p></article>
+    </section>
 
-    </body>
+    <section class="journal section shell" id="journal" aria-labelledby="journal-title">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow">Notes on skin</p><h2 id="journal-title">The journal</h2></div>
+        <a class="text-link" href="./case-study.html">View design story <span>↗</span></a>
+      </div>
+      <div class="journal-grid">
+        <article class="journal-card journal-card--large reveal">
+          <img src="./resources/images/prose-skin-care-1152x640.jpg" alt="Minimal skincare bottles and soft shadows">
+          <div><p class="eyebrow">Guide · 5 min</p><h3>How to build a routine your skin can live with</h3><a href="./case-study.html" aria-label="Read the routine article">Read story →</a></div>
+        </article>
+        <article class="journal-card reveal">
+          <img src="./resources/images/prose-custom-serum.a1e04518.jpg" alt="Serum texture in a laboratory setting">
+          <div><p class="eyebrow">Ingredients · 3 min</p><h3>Why hydration and oil are not the same thing</h3><a href="./case-study.html" aria-label="Read the hydration article">Read story →</a></div>
+        </article>
+      </div>
+    </section>
 
+    <section class="newsletter">
+      <div class="shell newsletter__inner reveal">
+        <div><p class="eyebrow">The quiet edit</p><h2>Thoughtful skincare, occasionally.</h2></div>
+        <form data-newsletter>
+          <label class="sr-only" for="newsletter-email">Email address</label>
+          <input id="newsletter-email" type="email" placeholder="Email address" required>
+          <button type="submit">Subscribe <span>→</span></button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer__grid">
+      <div><a class="wordmark wordmark--light" href="./index.html">PureGlow</a><p>A digital skincare concept exploring calm, considered commerce.</p></div>
+      <div><p class="footer__label">Explore</p><a href="#bestsellers">Collection</a><a href="#routine">Routine finder</a><a href="#journal">Journal</a></div>
+      <div><p class="footer__label">Project</p><a href="./case-study.html">Case study</a><a href="./case-study.html#system">Design system</a><a href="./case-study.html#accessibility">Accessibility</a></div>
+      <div><p class="footer__label">Elsewhere</p><a href="#" data-demo-link>Instagram</a><a href="#" data-demo-link>Pinterest</a><a href="#" data-demo-link>Behance</a></div>
+    </div>
+    <div class="shell footer__bottom"><p>© 2026 PureGlow concept.</p><p>Designed as a frontend UX/UI portfolio project.</p></div>
+  </footer>
+
+  <div class="overlay" data-overlay hidden></div>
+  <aside class="drawer" data-cart-drawer aria-hidden="true" aria-labelledby="cart-title">
+    <div class="drawer__header"><h2 id="cart-title">Your bag <span data-cart-total-count>(0)</span></h2><button type="button" data-close-drawer aria-label="Close bag">×</button></div>
+    <div class="drawer__body" data-cart-items></div>
+    <div class="drawer__footer" data-cart-footer hidden><div><span>Subtotal</span><strong data-cart-subtotal>$0</strong></div><button class="button button--dark" type="button" data-demo-checkout>Demo checkout</button><p>Portfolio demo — no payment will be collected.</p></div>
+  </aside>
+  <aside class="drawer" data-wishlist-drawer aria-hidden="true" aria-labelledby="wishlist-title">
+    <div class="drawer__header"><h2 id="wishlist-title">Saved pieces</h2><button type="button" data-close-drawer aria-label="Close wishlist">×</button></div>
+    <div class="drawer__body" data-wishlist-items></div>
+  </aside>
+  <div class="search-panel" data-search-panel hidden>
+    <div class="search-panel__header shell"><span class="wordmark">PureGlow</span><button type="button" data-close-search aria-label="Close search">×</button></div>
+    <div class="search-panel__content shell">
+      <p class="eyebrow">Search the collection</p>
+      <label class="sr-only" for="site-search">Search products</label>
+      <input id="site-search" type="search" placeholder="Try “serum” or “dryness”" data-search-input>
+      <div class="search-results" data-search-results></div>
+    </div>
+  </div>
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M12 20S4 15.6 4 9.4C4 5.2 9 3.5 12 7c3-3.5 8-1.8 8 2.4C20 15.6 12 20 12 20Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="icon-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 9V6a3 3 0 0 1 6 0v3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.5"/></symbol>
+  </svg>
+</body>
 </html>

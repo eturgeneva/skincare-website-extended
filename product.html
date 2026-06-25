@@ -1,152 +1,119 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>PureGlow Radiance Revive Serum</title>
-        <link rel="stylesheet" type="text/css" href="./resources/css/product.css">
-        <!-- <link rel="stylesheet" type="text/css" href="./resources/css/style.css"> -->
-        <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/b5e2ac5d19.js" crossorigin="anonymous"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <!-- Nav Bar Product Page -->
-        <header>
-            <nav>
-                <div class="company logo">
-                    <h1><a href="./index.html">PureGlow</a></h1>
-                </div>
-                
-                <div class="navbar">
-                    <div class="navigation desktop">
-                        <ul>
-                            <li><a href="./index.html">News</a></li>
-                            <li><a href="./index.html">Products</a></li>
-                            <li><a href="#">About</a></li>
-                        </ul>
-                    </div>
-                    <div class="navigation icons">
-                        <ul>
-                            <li><a href="#"><img src="./resources/icons/magnifying-glass-solid.svg"></a></li>
-                            <li><a href="#"><img src="./resources/icons/user-solid.svg"></a></li>
-                            <li><a href="#"><img src="./resources/icons/cart-shopping-solid.svg"></a></li>
-                            <!-- Burger icon only on mobile!-->
-                            <li class="burger"><a href="#"><img src="./resources/icons/bars-solid.svg"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Radiance Revive Serum by PureGlow — concept product experience.">
+  <title>Radiance Revive Serum — PureGlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./resources/css/style.css">
+  <script src="./resources/js/app.js" defer></script>
+</head>
+<body data-page="product">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="announcement"><p>Complimentary mini ritual with every collection</p><button class="announcement__close" type="button" aria-label="Dismiss announcement">×</button></div>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="wordmark" href="./index.html">PureGlow</a>
+      <div class="nav__links"><a href="./index.html#bestsellers">Bestsellers</a><a href="./index.html#concerns">Skin concerns</a><a href="./index.html#journal">Journal</a><a href="./case-study.html">Design story</a></div>
+      <div class="nav__actions">
+        <button class="icon-button" type="button" data-open-search aria-label="Search"><svg><use href="#icon-search"></use></svg></button>
+        <button class="icon-button" type="button" data-open-wishlist aria-label="Wishlist"><svg><use href="#icon-heart"></use></svg><span class="count" data-wishlist-count hidden>0</span></button>
+        <button class="icon-button" type="button" data-open-cart aria-label="Shopping bag"><svg><use href="#icon-bag"></use></svg><span class="count" data-cart-count hidden>0</span></button>
+        <button class="icon-button nav__menu" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false"><svg><use href="#icon-menu"></use></svg></button>
+      </div>
+    </nav>
+  </header>
 
-        <main>
-            <div class="product section">
-                <!-- Product Type Serum -->
-                <div class="product title">
-                    <h2>Radiance Revive Serum</h2>
-                    <p>Price</p>
-                </div>
+  <main id="main">
+    <div class="breadcrumbs shell"><a href="./index.html">Home</a><span>/</span><a href="./index.html#bestsellers">Serums</a><span>/</span><span>Radiance Revive Serum</span></div>
+    <section class="product-detail shell" data-product-card data-name="Radiance Revive Serum" data-category="Serum" data-concern="Dullness" data-price="58" data-image="./resources/images/custom-blended-moisture-building-essence.jpg">
+      <div class="product-gallery">
+        <div class="product-gallery__main"><img data-gallery-main src="./resources/images/custom-blended-moisture-building-essence.jpg" alt="Radiance Revive Serum bottle"></div>
+        <div class="product-gallery__thumbs" aria-label="Product images">
+          <button class="active" type="button" data-gallery-thumb data-src="./resources/images/custom-blended-moisture-building-essence.jpg"><img src="./resources/images/custom-blended-moisture-building-essence.jpg" alt="Bottle view"></button>
+          <button type="button" data-gallery-thumb data-src="./resources/images/mtm_labo_pdt_texture_1680x1296_20210422_custom-blended-moisture-building-essence.jpg"><img src="./resources/images/mtm_labo_pdt_texture_1680x1296_20210422_custom-blended-moisture-building-essence.jpg" alt="Serum texture"></button>
+          <button type="button" data-gallery-thumb data-src="./resources/images/prose-custom-serum.a1e04518.jpg"><img src="./resources/images/prose-custom-serum.a1e04518.jpg" alt="Serum laboratory detail"></button>
+        </div>
+      </div>
 
-                <div class="product images">
-                    <img src="./resources/images/custom-blended-moisture-building-essence.jpg">
-                    <img src="./resources/images/mtm_labo_pdt_texture_1680x1296_20210422_custom-blended-moisture-building-essence.jpg">
-                </div>
-            
+      <div class="product-info">
+        <p class="eyebrow">Brightening serum · 30 ml</p>
+        <div class="product-info__title"><h1>Radiance<br>Revive Serum</h1><p>$58</p></div>
+        <p class="product-info__lead">A lightweight Vitamin C and hyaluronic acid serum that helps brighten, hydrate and visibly even skin tone.</p>
+        <div class="rating" aria-label="Rated 4.8 out of 5"><span>★★★★★</span><a href="#reviews">4.8 · 126 reviews</a></div>
+        <div class="skin-tags"><span>Dullness</span><span>Dehydration</span><span>Uneven tone</span></div>
+        <div class="purchase-row">
+          <div class="quantity" aria-label="Quantity">
+            <button type="button" data-quantity-minus aria-label="Decrease quantity">−</button>
+            <output data-quantity>1</output>
+            <button type="button" data-quantity-plus aria-label="Increase quantity">+</button>
+          </div>
+          <button class="button button--dark" type="button" data-add-cart>Add to bag · $58</button>
+        </div>
+        <button class="save-button" type="button" data-wishlist><svg><use href="#icon-heart"></use></svg> Save to wishlist</button>
+        <p class="delivery-note"><span>●</span> In stock · Complimentary delivery over $75</p>
 
-                <!-- Buttons -->
-                <div class="buttons">
-                    <div class="quantity placeholder">
-                        <a href="#">-</a>
-                        <a href="#" id="quantity">1</a>
-                        <a href="#">+</a>
-                    </div>
-                    <div class="shop button">
-                        <a href="#">Add to bag</a>
-                    </div>
-                    <div class="wishlist button">
-                        <a href="#">Add to Wishlist</a>
-                    </div>
-                </div>
+        <div class="accordions">
+          <details open><summary>Why it works <span>+</span></summary><div><p>Vitamin C supports visible brightness while three molecular weights of hyaluronic acid help hydrate across the skin’s surface. Antioxidant botanicals offer additional daily support.</p></div></details>
+          <details><summary>Ingredients <span>+</span></summary><div><p>Hyaluronic Acid, Camellia Sinensis Leaf Extract, Triticum Vulgare Sprout Extract, Camellia Japonica Leaf Extract, stabilized Vitamin C.</p><p class="fine-print">Concept ingredient list for portfolio demonstration.</p></div></details>
+          <details><summary>How to use <span>+</span></summary><div><p>Press one to two pumps into clean skin morning and evening. Follow with moisturizer and SPF during the day.</p></div></details>
+          <details><summary>Delivery & returns <span>+</span></summary><div><p>This is a frontend concept store. Checkout, delivery and returns are demonstrated as UX states only.</p></div></details>
+        </div>
+      </div>
+    </section>
 
-                <div class="product text">
-                    <div class="description">
-                        <h3>Description</h3>
-                        <p>Unveil your skin’s natural glow with Radiance Revive, a lightweight Vitamin C serum designed to brighten, hydrate, and protect. Infused with hyaluronic acid and antioxidant-rich botanicals, this serum reduces the appearance of dark spots, evens skin tone, and enhances elasticity for a smoother, more radiant complexion. Perfect for all skin types, its fast-absorbing formula nourishes deep within, leaving your skin feeling refreshed, revitalized, and visibly glowing.</p>
-                    </div>
-                    <div class="benefits">
-                        <h3>Key Benefits</h3>
-                        <ul>
-                            <li>Brightens dull skin</li>
-                            <li>Reduces dark spots and hyperpigmentation</li>
-                            <li>Boosts hydration for a plumper look</li>
-                            <li>Smooths and evens out skin texture</li>
-                        </ul>
-                    </div>
+    <section class="product-story section shell">
+      <div class="product-story__copy reveal"><p class="eyebrow">The texture</p><h2>Weightless hydration,<br>without the wait.</h2><p>The fluid, cushiony texture absorbs quickly and layers comfortably beneath moisturizer and SPF.</p></div>
+      <div class="product-story__image reveal"><img src="./resources/images/mtm_labo_pdt_texture_1680x1296_20210422_custom-blended-moisture-building-essence.jpg" alt="Clear serum drop on glass"></div>
+    </section>
 
-                    <div class="ingredients">
-                        <h3>Ingredients</h3>
-                        <p>Hyaluronic Acid, Camellia Sinensis Leaf Extract, Triticum Vulgare (Wheat) Sprout Extract, Camellia Japonica Leaf Extract</p>
-                    </div>
+    <section class="formula section">
+      <div class="shell">
+        <div class="section-heading reveal"><div><p class="eyebrow">Inside the formula</p><h2>Three focused actives</h2></div><p>Chosen to support luminosity, hydration and resilience.</p></div>
+        <div class="formula-grid">
+          <article class="reveal"><span>01</span><h3>Vitamin C</h3><p>Helps reduce the appearance of dullness and uneven tone.</p></article>
+          <article class="reveal"><span>02</span><h3>Hyaluronic acid</h3><p>Draws in moisture for a smoother, plumper-looking surface.</p></article>
+          <article class="reveal"><span>03</span><h3>Green tea</h3><p>Antioxidant-rich botanical support for daily environmental stress.</p></article>
+        </div>
+      </div>
+    </section>
 
-                    <div class="skin types">
-                        <h3>Suitable for</h3>
-                        <p>All skin types</p>            
-                    </div>
+    <section class="reviews section shell" id="reviews">
+      <div class="reviews__score reveal"><p class="eyebrow">Community notes</p><strong>4.8</strong><span>★★★★★</span><p>Based on 126 concept reviews</p></div>
+      <div class="reviews__list reveal">
+        <blockquote><p>“The kind of texture that disappears immediately but leaves skin looking rested.”</p><footer><span>Amelia K.</span><span>Verified ritual · Combination skin</span></footer></blockquote>
+        <blockquote><p>“My routine feels simpler, and my skin looks more even after a few weeks.”</p><footer><span>Mina R.</span><span>Verified ritual · Dry skin</span></footer></blockquote>
+      </div>
+    </section>
 
-                    <div class="usage">
-                        <h3>How to Use</h3>
-                        <p>Use morning and night by gently applying a small, pearl size amount around the eye area with your ring finger.</p>
-                    </div>
-                </div>
+    <section class="section recommendations">
+      <div class="section-heading shell reveal"><div><p class="eyebrow">Complete the ritual</p><h2>Pairs well with</h2></div></div>
+      <div class="product-grid product-grid--two shell">
+        <article class="product-card reveal" data-product-card data-name="Radiance Revive Cleanser" data-category="Cleanser" data-concern="Sensitivity" data-price="42" data-image="./resources/images/custom-blended-milk-cleanser.jpg">
+          <a class="product-card__media" href="./product.html"><img class="product-card__primary" src="./resources/images/custom-blended-milk-cleanser.jpg" alt="Radiance Revive Cleanser"><img class="product-card__secondary" src="./resources/images/mtm_labo_pdt_texture_1680x1296_20210422_custom-blended-milk-cleanser.jpg" alt=""></a>
+          <div class="product-card__meta"><div><p class="product-card__type">Step 01 · Cleanse</p><h3>Radiance Revive Cleanser</h3></div><p class="product-card__price">$42</p></div>
+          <button class="button button--outline button--small" type="button" data-add-cart>Add to bag</button>
+        </article>
+        <article class="product-card reveal" data-product-card data-name="Radiance Revive Cream" data-category="Moisturizer" data-concern="Dryness" data-price="64" data-image="./resources/images/custom-blended-conditioning-cream.jpg">
+          <a class="product-card__media" href="./product.html"><img class="product-card__primary" src="./resources/images/custom-blended-conditioning-cream.jpg" alt="Radiance Revive Cream"><img class="product-card__secondary" src="./resources/images/mtm_labo_pdt_texture_1680x1296_20210422_custom-blended-conditioning-cream.jpg" alt=""></a>
+          <div class="product-card__meta"><div><p class="product-card__type">Step 03 · Seal</p><h3>Radiance Revive Cream</h3></div><p class="product-card__price">$64</p></div>
+          <button class="button button--outline button--small" type="button" data-add-cart>Add to bag</button>
+        </article>
+      </div>
+    </section>
+  </main>
 
-            </div>
+  <div class="mobile-buy"><div><b>Radiance Revive Serum</b><span>$58</span></div><button class="button button--dark" type="button" data-mobile-add>Add to bag</button></div>
+  <footer class="site-footer"><div class="shell footer__grid"><div><a class="wordmark wordmark--light" href="./index.html">PureGlow</a><p>A digital skincare concept exploring calm, considered commerce.</p></div><div><p class="footer__label">Explore</p><a href="./index.html#bestsellers">Collection</a><a href="./index.html#routine">Routine finder</a><a href="./index.html#journal">Journal</a></div><div><p class="footer__label">Project</p><a href="./case-study.html">Case study</a><a href="./case-study.html#system">Design system</a><a href="./case-study.html#accessibility">Accessibility</a></div></div><div class="shell footer__bottom"><p>© 2026 PureGlow concept.</p><p>Frontend UX/UI portfolio project.</p></div></footer>
 
-            <!-- Company values-->
-            <div class="values section">
-                <div class="value cruelty">
-                    <img src="./resources/icons/Brand_Values-01.svg">
-                    <h3>Cruelty Free</h3>
-                </div>
-
-                <div class="value vegan">
-                    <img src="./resources/icons/Brand_Values-02.svg">
-                    <h3>Vegan</h3>
-                </div>
-
-                <div class="value fragrance">
-                    <img src="./resources/icons/Brand_Values-03.svg">
-                    <h3>Fragrance Free</h3>
-                </div>
-            </div>
-
-            <!-- <div class="suggested content">
-                <h3>You may also like...</h3>
-            </div> -->
-
-        </main>
-
-        <!-- Footer Product Page -->
-        <footer>
-            <div class="footer left">
-                <div class="company logo">
-                    <h1>PureGlow</h1>
-                </div>
-
-                <div class="social media">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </div>
-
-            <div class="footer right">
-                <ul>
-                    <li>Stores</li>
-                    <li>Terms of Service</li>
-                    <li>FAQs</li>
-                    <li>Contact Us</li>
-                </ul>
-            </div>
-        </footer>
-    
-    </body>
+  <div class="overlay" data-overlay hidden></div>
+  <aside class="drawer" data-cart-drawer aria-hidden="true" aria-labelledby="cart-title"><div class="drawer__header"><h2 id="cart-title">Your bag <span data-cart-total-count>(0)</span></h2><button type="button" data-close-drawer aria-label="Close bag">×</button></div><div class="drawer__body" data-cart-items></div><div class="drawer__footer" data-cart-footer hidden><div><span>Subtotal</span><strong data-cart-subtotal>$0</strong></div><button class="button button--dark" type="button" data-demo-checkout>Demo checkout</button><p>Portfolio demo — no payment will be collected.</p></div></aside>
+  <aside class="drawer" data-wishlist-drawer aria-hidden="true" aria-labelledby="wishlist-title"><div class="drawer__header"><h2 id="wishlist-title">Saved pieces</h2><button type="button" data-close-drawer aria-label="Close wishlist">×</button></div><div class="drawer__body" data-wishlist-items></div></aside>
+  <div class="search-panel" data-search-panel hidden><div class="search-panel__header shell"><span class="wordmark">PureGlow</span><button type="button" data-close-search>×</button></div><div class="search-panel__content shell"><p class="eyebrow">Search the collection</p><label class="sr-only" for="site-search">Search products</label><input id="site-search" type="search" placeholder="Try “serum” or “dryness”" data-search-input><div class="search-results" data-search-results></div></div></div>
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+  <svg class="svg-sprite" aria-hidden="true"><symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol><symbol id="icon-heart" viewBox="0 0 24 24"><path d="M12 20S4 15.6 4 9.4C4 5.2 9 3.5 12 7c3-3.5 8-1.8 8 2.4C20 15.6 12 20 12 20Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol><symbol id="icon-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 9V6a3 3 0 0 1 6 0v3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol><symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.5"/></symbol></svg>
+</body>
 </html>

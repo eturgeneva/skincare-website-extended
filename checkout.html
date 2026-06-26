@@ -23,7 +23,7 @@
         <span>Confirm</span>
       </div>
       <div class="nav__actions">
-        <a class="text-link checkout-back" href="./index.html#bestsellers">Continue shopping <span>↗</span></a>
+        <a class="text-link checkout-back" href="./index.html#bestsellers">Continue shopping</a>
         <a class="icon-button" href="./profile.html" aria-label="Profile">
           <svg aria-hidden="true"><use href="#icon-user"></use></svg>
         </a>
@@ -151,6 +151,30 @@
               </span>
               <strong>Demo</strong>
             </label>
+          </div>
+          <div class="new-payment-form" data-new-payment hidden>
+            <div class="field-grid">
+              <label class="field field--full">Name on card
+                <input type="text" name="cardName" placeholder="Name as it appears on card" autocomplete="cc-name" data-payment-field>
+                <span class="field__error">Name on card is required.</span>
+              </label>
+              <label class="field field--full">Card number
+                <input type="text" name="cardNumber" placeholder="Card number" inputmode="numeric" autocomplete="cc-number" data-payment-field>
+                <span class="field__error">Card number is required.</span>
+              </label>
+              <label class="field">Expiry
+                <input type="text" name="cardExpiry" placeholder="MM / YY" autocomplete="cc-exp" data-payment-field>
+                <span class="field__error">Expiry is required.</span>
+              </label>
+              <label class="field">Security code
+                <input type="text" name="cardCvc" placeholder="CVC" inputmode="numeric" autocomplete="cc-csc" data-payment-field>
+                <span class="field__error">Security code is required.</span>
+              </label>
+              <label class="check-field field--full">
+                <input type="checkbox" name="savePayment">
+                <span>Save this payment method for next time.</span>
+              </label>
+            </div>
           </div>
           <p class="payment-disclaimer">No payment details are collected in this frontend concept. The interface demonstrates payment choice states only.</p>
         </div>

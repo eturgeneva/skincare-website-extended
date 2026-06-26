@@ -310,6 +310,7 @@ body[data-page="checkout"] { background: var(--paper); }
 .payment-method b { font-size: .9rem; }
 .payment-method small { color: var(--muted); font-size: .78rem; }
 .payment-method strong { color: var(--muted); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
+.new-payment-form { margin-top: .75rem; padding: 1.1rem; border: 1px solid var(--line); background: #fbfcf8; }
 .payment-disclaimer { margin: 1rem 0 0; color: var(--muted); font-size: .78rem; }
 .checkout-actions { display: flex; justify-content: space-between; gap: 1rem; padding-top: .5rem; }
 .order-summary { align-self: start; }

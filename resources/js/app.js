@@ -334,6 +334,18 @@ function initCheckout() {
     showToast(`${button.dataset.expressPay} selected — demo state only`);
   }));
 
+  const togglePaymentFields = () => {
+    const newPayment = $("[name='payment']:checked")?.value === "new";
+    const panel = $("[data-new-payment]");
+    if (panel) panel.hidden = !newPayment;
+    if (!newPayment) $$("[data-payment-field]").forEach(input => input.closest(".field")?.classList.remove("invalid"));
+  };
+  $$("[name='payment']").forEach(input => input.addEventListener("change", () => {
+    togglePaymentFields();
+    showToast(input.value === "new" ? "New payment form opened" : "Saved payment method selected");
+  }));
+  togglePaymentFields();
+
   $("[data-promo-form]")?.addEventListener("submit", event => {
     event.preventDefault();
     const input = event.currentTarget.elements.promo;
@@ -372,6 +384,18 @@ function initCheckout() {
 
     const selectedShipping = $("[name='shipping']:checked");
     const selectedPayment = $("[name='payment']:checked");
+    if (selectedPayment?.value === "new") {
+      $$("[data-payment-field]").forEach(input => {
+        const invalid = !input.value.trim();
+        input.closest(".field")?.classList.toggle("invalid", invalid);
+        if (invalid && !firstInvalid) firstInvalid = input;
+      });
+      if (firstInvalid) {
+        firstInvalid.focus();
+        showToast("Add payment details or use the saved method");
+        return;
+      }
+    }
     const firstName = form.elements.firstName.value.trim();
     const orderNumber = `PG-${Math.floor(1000 + Math.random() * 9000)}`;
     storage.set("pureglow-last-order", {

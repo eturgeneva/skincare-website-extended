@@ -18,7 +18,6 @@
       <a class="wordmark" href="./index.html">PureGlow</a>
       <div class="admin-tabs">
         <a href="./admin-dashboard.html">Dashboard</a>
-        <a href="./admin-product-edit.html">Product editing</a>
         <a class="active" href="./admin-catalog.html">Catalog</a>
       </div>
       <button class="button button--outline button--small" type="button" data-admin-action>New product</button>
@@ -38,31 +37,37 @@
     <section class="admin-panel reveal">
       <div class="admin-panel__heading">
         <div><p class="eyebrow">Product catalog</p><h2>Collection list.</h2></div>
-        <div class="admin-filters">
-          <button class="active" type="button" data-admin-action>All</button>
-          <button type="button" data-admin-action>Published</button>
-          <button type="button" data-admin-action>Low stock</button>
+        <div class="admin-catalog-tools">
+          <label class="admin-search">
+            <span class="sr-only">Search catalog</span>
+            <input type="search" placeholder="Search products" data-admin-catalog-search>
+          </label>
+          <div class="admin-filters">
+            <button class="active" type="button" data-admin-action>All</button>
+            <button type="button" data-admin-action>Published</button>
+            <button type="button" data-admin-action>Low stock</button>
+          </div>
         </div>
       </div>
       <div class="catalog-table" role="table" aria-label="Catalog products">
         <div class="catalog-row catalog-row--head" role="row">
           <span>Product</span><span>Status</span><span>Inventory</span><span>Price</span><span>Action</span>
         </div>
-        <div class="catalog-row" role="row">
+        <div class="catalog-row" role="row" data-catalog-row>
           <span><img src="./resources/images/custom-blended-moisture-building-essence.jpg" alt="">Radiance Revive Serum</span>
           <span><b class="admin-badge">Published</b></span>
           <span>42 units</span>
           <span>$58</span>
           <span><a href="./admin-product-edit.html">Edit</a></span>
         </div>
-        <div class="catalog-row" role="row">
+        <div class="catalog-row" role="row" data-catalog-row>
           <span><img src="./resources/images/custom-blended-milk-cleanser.jpg" alt="">Radiance Revive Cleanser</span>
           <span><b class="admin-badge admin-badge--soft">Draft</b></span>
           <span>18 units</span>
           <span>$42</span>
           <span><a href="./admin-product-edit.html">Edit</a></span>
         </div>
-        <div class="catalog-row" role="row">
+        <div class="catalog-row" role="row" data-catalog-row>
           <span><img src="./resources/images/custom-blended-conditioning-cream.jpg" alt="">Radiance Revive Cream</span>
           <span><b class="admin-badge">Published</b></span>
           <span>9 units</span>
@@ -70,6 +75,7 @@
           <span><a href="./admin-product-edit.html">Edit</a></span>
         </div>
       </div>
+      <p class="catalog-empty" data-catalog-empty hidden>No products match that search.</p>
     </section>
 
     <section class="admin-grid">

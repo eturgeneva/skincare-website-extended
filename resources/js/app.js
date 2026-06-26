@@ -531,6 +531,22 @@ function initProfile() {
 function initAdmin() {
   if (document.body.dataset.page !== "admin") return;
 
+  const catalogSearch = $("[data-admin-catalog-search]");
+  if (catalogSearch) {
+    const rows = $$("[data-catalog-row]");
+    const empty = $("[data-catalog-empty]");
+    catalogSearch.addEventListener("input", () => {
+      const query = catalogSearch.value.trim().toLowerCase();
+      let visibleCount = 0;
+      rows.forEach(row => {
+        const visible = row.textContent.toLowerCase().includes(query);
+        row.hidden = !visible;
+        if (visible) visibleCount += 1;
+      });
+      if (empty) empty.hidden = visibleCount !== 0;
+    });
+  }
+
   $$("[data-admin-action]").forEach(button => button.addEventListener("click", event => {
     event.preventDefault();
     const label = button.textContent.trim() || "Action";

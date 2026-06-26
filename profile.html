@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PureGlow profile — frontend-only account dashboard and skincare preferences.">
+  <title>Your Profile — PureGlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./resources/css/style.css">
+  <script src="./resources/js/app.js" defer></script>
+</head>
+<body data-page="profile">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="wordmark" href="./index.html">PureGlow</a>
+      <div class="nav__links">
+        <a href="./index.html#bestsellers">Bestsellers</a>
+        <a href="./index.html#routine">Routine finder</a>
+        <a href="./checkout.html">Checkout</a>
+        <a href="./case-study.html">Design story</a>
+      </div>
+      <div class="nav__actions">
+        <button class="icon-button" type="button" data-open-search aria-label="Search"><svg aria-hidden="true"><use href="#icon-search"></use></svg></button>
+        <a class="icon-button active" href="./profile.html" aria-label="Profile"><svg aria-hidden="true"><use href="#icon-user"></use></svg></a>
+        <button class="icon-button" type="button" data-open-wishlist aria-label="Wishlist"><svg aria-hidden="true"><use href="#icon-heart"></use></svg><span class="count" data-wishlist-count hidden>0</span></button>
+        <button class="icon-button" type="button" data-open-cart aria-label="Shopping bag"><svg aria-hidden="true"><use href="#icon-bag"></use></svg><span class="count" data-cart-count hidden>0</span></button>
+        <button class="icon-button nav__menu" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false"><svg aria-hidden="true"><use href="#icon-menu"></use></svg></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="profile-hero">
+      <div class="shell profile-hero__grid">
+        <div class="reveal">
+          <p class="eyebrow">Your account</p>
+          <h1>A calmer way to remember your ritual.</h1>
+          <p>Profile, preferences and order states are stored locally in this browser to keep the project fully frontend-only.</p>
+        </div>
+        <aside class="profile-card reveal" aria-label="Profile summary">
+          <div class="profile-avatar">PG</div>
+          <p class="eyebrow">Concept member</p>
+          <h2 data-profile-name>Elena Studio</h2>
+          <p data-profile-email>elena@example.com</p>
+          <div class="profile-card__meta">
+            <span><b data-profile-skin>Combination</b> Skin mood</span>
+            <span><b data-profile-concern>Dullness</b> Focus</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="profile-dashboard shell">
+      <aside class="profile-nav reveal" aria-label="Profile sections">
+        <a href="#overview">Overview</a>
+        <a href="#preferences">Preferences</a>
+        <a href="#orders">Orders</a>
+        <a href="#saved">Saved</a>
+      </aside>
+
+      <div class="profile-content">
+        <section class="profile-panel reveal" id="overview">
+          <div class="profile-panel__heading">
+            <div><p class="eyebrow">Overview</p><h2>Today’s skin edit.</h2></div>
+            <a class="button button--outline button--small" href="./index.html#routine">Retake finder</a>
+          </div>
+          <div class="profile-metrics">
+            <article><span>Routine</span><strong data-profile-routine>Not started</strong><p>Saved from the consultation flow.</p></article>
+            <article><span>Saved</span><strong data-profile-saved-count>0</strong><p>Products in your considered edit.</p></article>
+            <article><span>Bag</span><strong data-profile-bag-count>0</strong><p>Items waiting for checkout.</p></article>
+          </div>
+        </section>
+
+        <section class="profile-panel reveal" id="preferences">
+          <div class="profile-panel__heading">
+            <div><p class="eyebrow">Preferences</p><h2>Your skincare profile.</h2></div>
+          </div>
+          <form class="profile-form" data-profile-form>
+            <div class="field-grid">
+              <label class="field">Display name
+                <input type="text" name="name" value="Elena Studio" required>
+              </label>
+              <label class="field">Email
+                <input type="email" name="email" value="elena@example.com" required>
+              </label>
+              <label class="field">Skin mood
+                <select name="skin">
+                  <option>Balanced</option>
+                  <option selected>Combination</option>
+                  <option>Dry</option>
+                  <option>Sensitive</option>
+                </select>
+              </label>
+              <label class="field">Primary focus
+                <select name="concern">
+                  <option selected>Dullness</option>
+                  <option>Dryness</option>
+                  <option>Sensitivity</option>
+                  <option>Texture</option>
+                </select>
+              </label>
+            </div>
+            <div class="profile-form__footer">
+              <p>These values never leave the browser — a safe way to demonstrate profile UX without a backend.</p>
+              <button class="button button--dark" type="submit">Save profile</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="profile-panel reveal" id="orders">
+          <div class="profile-panel__heading">
+            <div><p class="eyebrow">Orders</p><h2>Recent concept order.</h2></div>
+            <a class="text-link" href="./checkout.html">Checkout <span>↗</span></a>
+          </div>
+          <div data-profile-order></div>
+        </section>
+
+        <section class="profile-panel reveal" id="saved">
+          <div class="profile-panel__heading">
+            <div><p class="eyebrow">Saved</p><h2>Your saved pieces.</h2></div>
+            <button class="text-button" type="button" data-open-wishlist>Open wishlist</button>
+          </div>
+          <div class="profile-saved-grid" data-profile-saved></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer__grid">
+      <div><a class="wordmark wordmark--light" href="./index.html">PureGlow</a><p>A digital skincare concept exploring calm, considered commerce.</p></div>
+      <div><p class="footer__label">Account</p><a href="#overview">Overview</a><a href="#preferences">Preferences</a><a href="#orders">Orders</a></div>
+      <div><p class="footer__label">Experience</p><a href="./index.html">Homepage</a><a href="./product.html">Product page</a><a href="./checkout.html">Checkout</a></div>
+    </div>
+    <div class="shell footer__bottom"><p>© 2026 PureGlow concept.</p><p>Static profile dashboard for a frontend portfolio.</p></div>
+  </footer>
+
+  <div class="overlay" data-overlay hidden></div>
+  <aside class="drawer" data-cart-drawer aria-hidden="true" aria-labelledby="cart-title"><div class="drawer__header"><h2 id="cart-title">Your bag <span data-cart-total-count>(0)</span></h2><button type="button" data-close-drawer aria-label="Close bag">×</button></div><div class="drawer__body" data-cart-items></div><div class="drawer__footer" data-cart-footer hidden><div><span>Subtotal</span><strong data-cart-subtotal>$0</strong></div><a class="button button--dark" href="./checkout.html">Checkout</a><p>Frontend demo — no payment will be collected.</p></div></aside>
+  <aside class="drawer" data-wishlist-drawer aria-hidden="true" aria-labelledby="wishlist-title"><div class="drawer__header"><h2 id="wishlist-title">Saved pieces</h2><button type="button" data-close-drawer aria-label="Close wishlist">×</button></div><div class="drawer__body" data-wishlist-items></div></aside>
+  <div class="search-panel" data-search-panel hidden><div class="search-panel__header shell"><span class="wordmark">PureGlow</span><button type="button" data-close-search aria-label="Close search">×</button></div><div class="search-panel__content shell"><p class="eyebrow">Search the collection</p><label class="sr-only" for="site-search">Search products</label><input id="site-search" type="search" placeholder="Try “serum” or “dryness”" data-search-input><div class="search-results" data-search-results></div></div></div>
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M12 20S4 15.6 4 9.4C4 5.2 9 3.5 12 7c3-3.5 8-1.8 8 2.4C20 15.6 12 20 12 20Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="icon-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 9V6a3 3 0 0 1 6 0v3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.5"/></symbol>
+  </svg>
+</body>
+</html>

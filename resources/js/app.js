@@ -65,6 +65,7 @@ function addToCart(product, quantity = 1) {
   storage.set("pureglow-cart", cart);
   updateCounts();
   renderCart();
+  renderProfile();
   showToast(`${product.name} added to your bag`);
 }
 
@@ -100,6 +101,73 @@ function renderWishlist() {
         <div><h3>${item.name}</h3><p>${item.category}<br>$${item.price}</p><button class="text-button" type="button" data-wishlist-add="${index}">Add to bag</button></div>
         <button type="button" data-remove-wishlist="${index}" aria-label="Remove ${item.name}">×</button>
       </article>`).join("");
+  }
+}
+
+function renderProfile() {
+  const profilePage = $("[data-page='profile']");
+  if (!profilePage) return;
+
+  const profile = storage.get("pureglow-profile", {
+    name: "Elena Studio",
+    email: "elena@example.com",
+    skin: "Combination",
+    concern: "Dullness"
+  });
+  const routine = storage.get("pureglow-routine", {});
+  const lastOrder = storage.get("pureglow-last-order", null);
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  $("[data-profile-name]").textContent = profile.name;
+  $("[data-profile-email]").textContent = profile.email;
+  $("[data-profile-skin]").textContent = profile.skin;
+  $("[data-profile-concern]").textContent = profile.concern;
+  $("[data-profile-saved-count]").textContent = wishlist.length;
+  $("[data-profile-bag-count]").textContent = cartCount;
+  $("[data-profile-routine]").textContent = routine.concern ? `${routine.concern} ritual` : "Not started";
+
+  const form = $("[data-profile-form]");
+  if (form) {
+    form.elements.name.value = profile.name;
+    form.elements.email.value = profile.email;
+    form.elements.skin.value = profile.skin;
+    form.elements.concern.value = profile.concern;
+  }
+
+  const orderContainer = $("[data-profile-order]");
+  if (orderContainer) {
+    orderContainer.innerHTML = lastOrder ? `
+      <article class="profile-order">
+        <div><span>Order</span><strong>${lastOrder.orderNumber}</strong></div>
+        <div><span>Delivery</span><strong>${lastOrder.shipping}</strong></div>
+        <div><span>Payment</span><strong>${lastOrder.payment || "Saved payment method"}</strong></div>
+        <div><span>Items</span><strong>${lastOrder.items.reduce((sum, item) => sum + item.quantity, 0)}</strong></div>
+        <p>${lastOrder.items.map(item => `${item.quantity} × ${item.name}`).join(" · ")}</p>
+      </article>` : `
+      <div class="profile-empty">
+        <b>No concept orders yet.</b>
+        <p>Place an order through checkout and it will appear here as local frontend state.</p>
+        <a class="button button--outline button--small" href="./checkout.html">Open checkout</a>
+      </div>`;
+  }
+
+  const savedContainer = $("[data-profile-saved]");
+  if (savedContainer) {
+    savedContainer.innerHTML = wishlist.length ? wishlist.map((item, index) => `
+      <article class="profile-saved-card">
+        <img src="${item.image}" alt="">
+        <div>
+          <p>${item.category} · ${item.concern}</p>
+          <h3>${item.name}</h3>
+          <span>$${item.price}</span>
+        </div>
+        <button class="button button--outline button--small" type="button" data-profile-add="${index}">Add to bag</button>
+      </article>`).join("") : `
+      <div class="profile-empty">
+        <b>Your saved shelf is quiet.</b>
+        <p>Use the heart icon on products to curate a personal edit.</p>
+        <a class="button button--outline button--small" href="./index.html#bestsellers">Browse products</a>
+      </div>`;
   }
 }
 
@@ -164,6 +232,7 @@ function initGlobalUI() {
     storage.set("pureglow-wishlist", wishlist);
     updateCounts();
     renderWishlist();
+    renderProfile();
   }));
 
   document.addEventListener("click", event => {
@@ -172,11 +241,11 @@ function initGlobalUI() {
     const wishlistAdd = event.target.closest("[data-wishlist-add]");
     if (removeCart) {
       cart.splice(Number(removeCart.dataset.removeCart), 1);
-      storage.set("pureglow-cart", cart); updateCounts(); renderCart(); renderCheckout();
+      storage.set("pureglow-cart", cart); updateCounts(); renderCart(); renderCheckout(); renderProfile();
     }
     if (removeWishlist) {
       wishlist.splice(Number(removeWishlist.dataset.removeWishlist), 1);
-      storage.set("pureglow-wishlist", wishlist); updateCounts(); renderWishlist();
+      storage.set("pureglow-wishlist", wishlist); updateCounts(); renderWishlist(); renderProfile();
     }
     if (wishlistAdd) addToCart(wishlist[Number(wishlistAdd.dataset.wishlistAdd)]);
   });
@@ -193,6 +262,7 @@ function initGlobalUI() {
   renderCart();
   renderWishlist();
   updateCounts();
+  renderProfile();
 }
 
 function renderCheckout() {
@@ -301,11 +371,13 @@ function initCheckout() {
     }
 
     const selectedShipping = $("[name='shipping']:checked");
+    const selectedPayment = $("[name='payment']:checked");
     const firstName = form.elements.firstName.value.trim();
     const orderNumber = `PG-${Math.floor(1000 + Math.random() * 9000)}`;
     storage.set("pureglow-last-order", {
       orderNumber,
       shipping: selectedShipping?.dataset.shippingLabel || "Complimentary ground",
+      payment: selectedPayment?.value === "new" ? "New payment method" : "Saved payment method",
       items: cart,
       placedAt: new Date().toISOString()
     });
@@ -315,6 +387,7 @@ function initCheckout() {
     updateCounts();
     renderCart();
     renderCheckout();
+    renderProfile();
 
     $("[data-order-number]").textContent = orderNumber;
     $("[data-order-delivery]").textContent = selectedShipping?.dataset.shippingLabel || "Complimentary ground";
@@ -406,6 +479,31 @@ function initForms() {
   });
 }
 
+function initProfile() {
+  const form = $("[data-profile-form]");
+  if (!form) return;
+
+  renderProfile();
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const profile = {
+      name: form.elements.name.value.trim() || "PureGlow Member",
+      email: form.elements.email.value.trim() || "member@example.com",
+      skin: form.elements.skin.value,
+      concern: form.elements.concern.value
+    };
+    storage.set("pureglow-profile", profile);
+    renderProfile();
+    showToast("Profile preferences saved locally");
+  });
+
+  document.addEventListener("click", event => {
+    const add = event.target.closest("[data-profile-add]");
+    if (add) addToCart(wishlist[Number(add.dataset.profileAdd)]);
+  });
+}
+
 initGlobalUI();
 initSearch();
 initReveal();
@@ -413,3 +511,4 @@ initRoutine();
 initProduct();
 initForms();
 initCheckout();
+initProfile();

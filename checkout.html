@@ -24,6 +24,9 @@
       </div>
       <div class="nav__actions">
         <a class="text-link checkout-back" href="./index.html#bestsellers">Continue shopping <span>↗</span></a>
+        <a class="icon-button" href="./profile.html" aria-label="Profile">
+          <svg aria-hidden="true"><use href="#icon-user"></use></svg>
+        </a>
         <button class="icon-button" type="button" data-open-cart aria-label="Shopping bag">
           <svg aria-hidden="true"><use href="#icon-bag"></use></svg>
           <span class="count" data-cart-count hidden>0</span>
@@ -129,27 +132,27 @@
               <h2>Payment method.</h2>
             </div>
           </div>
-          <div class="payment-preview" aria-hidden="true">
-            <span></span><span></span><span></span><span></span>
+          <div class="payment-methods" role="radiogroup" aria-label="Payment method">
+            <label class="payment-method">
+              <input type="radio" name="payment" value="saved" checked>
+              <span class="payment-method__icon" aria-hidden="true">••</span>
+              <span>
+                <b>Use saved payment method</b>
+                <small>PureGlow wallet · Default method on this device</small>
+              </span>
+              <strong>Selected</strong>
+            </label>
+            <label class="payment-method">
+              <input type="radio" name="payment" value="new">
+              <span class="payment-method__icon" aria-hidden="true">+</span>
+              <span>
+                <b>Add a new payment method</b>
+                <small>Opens a secure payment step in a real store</small>
+              </span>
+              <strong>Demo</strong>
+            </label>
           </div>
-          <div class="field-grid">
-            <label class="field field--full">Card number
-              <input type="text" name="card" value="4242 4242 4242 4242" inputmode="numeric" autocomplete="cc-number" required>
-              <span class="field__error">Card number is required.</span>
-            </label>
-            <label class="field">Expiry
-              <input type="text" name="expiry" value="08 / 28" autocomplete="cc-exp" required>
-              <span class="field__error">Expiry is required.</span>
-            </label>
-            <label class="field">CVC
-              <input type="text" name="cvc" value="123" inputmode="numeric" autocomplete="cc-csc" required>
-              <span class="field__error">CVC is required.</span>
-            </label>
-            <label class="check-field field--full">
-              <input type="checkbox" name="billing" checked>
-              <span>Billing address is the same as shipping address.</span>
-            </label>
-          </div>
+          <p class="payment-disclaimer">No payment details are collected in this frontend concept. The interface demonstrates payment choice states only.</p>
         </div>
 
         <div class="checkout-actions">
@@ -220,6 +223,7 @@
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
   <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
     <symbol id="icon-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 9V6a3 3 0 0 1 6 0v3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
   </svg>
 </body>

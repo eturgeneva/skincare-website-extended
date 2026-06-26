@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PureGlow checkout — a polished frontend-only ecommerce flow.">
+  <title>Checkout — PureGlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./resources/css/style.css">
+  <script src="./resources/js/app.js" defer></script>
+</head>
+<body data-page="checkout">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header checkout-header">
+    <nav class="nav shell" aria-label="Checkout navigation">
+      <a class="wordmark" href="./index.html">PureGlow</a>
+      <div class="checkout-steps" aria-label="Checkout progress">
+        <span class="active">Bag</span>
+        <span class="active">Details</span>
+        <span>Confirm</span>
+      </div>
+      <div class="nav__actions">
+        <a class="text-link checkout-back" href="./index.html#bestsellers">Continue shopping <span>↗</span></a>
+        <button class="icon-button" type="button" data-open-cart aria-label="Shopping bag">
+          <svg aria-hidden="true"><use href="#icon-bag"></use></svg>
+          <span class="count" data-cart-count hidden>0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="checkout-hero">
+      <div class="shell checkout-hero__inner reveal">
+        <p class="eyebrow">Secure concept checkout</p>
+        <h1>Complete your ritual.</h1>
+        <p>A refined, frontend-only checkout designed to demonstrate form UX, order review, validation, promo states and confirmation feedback.</p>
+      </div>
+    </section>
+
+    <section class="checkout shell" data-checkout>
+      <form class="checkout-form reveal" data-checkout-form novalidate>
+        <div class="checkout-card express-card">
+          <div class="checkout-card__heading">
+            <div>
+              <p class="eyebrow">Express</p>
+              <h2>Start beautifully.</h2>
+            </div>
+            <span>Demo</span>
+          </div>
+          <div class="express-options">
+            <button type="button" data-express-pay="Apple Pay">Apple Pay</button>
+            <button type="button" data-express-pay="Shop Pay">Shop Pay</button>
+            <button type="button" data-express-pay="PayPal">PayPal</button>
+          </div>
+          <p class="fine-print">Express payment buttons are interaction samples only.</p>
+        </div>
+
+        <div class="checkout-card">
+          <div class="checkout-card__heading">
+            <div>
+              <p class="eyebrow">01 · Contact</p>
+              <h2>Where should we send updates?</h2>
+            </div>
+          </div>
+          <div class="field-grid">
+            <label class="field field--full">Email address
+              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+              <span class="field__error">Enter a valid email address.</span>
+            </label>
+            <label class="check-field field--full">
+              <input type="checkbox" name="newsletter">
+              <span>Send me occasional skincare notes and launch updates.</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="checkout-card">
+          <div class="checkout-card__heading">
+            <div>
+              <p class="eyebrow">02 · Delivery</p>
+              <h2>Shipping details.</h2>
+            </div>
+          </div>
+          <div class="field-grid">
+            <label class="field">First name
+              <input type="text" name="firstName" placeholder="Elena" autocomplete="given-name" required>
+              <span class="field__error">First name is required.</span>
+            </label>
+            <label class="field">Last name
+              <input type="text" name="lastName" placeholder="Studio" autocomplete="family-name" required>
+              <span class="field__error">Last name is required.</span>
+            </label>
+            <label class="field field--full">Address
+              <input type="text" name="address" placeholder="123 Botanical Lane" autocomplete="street-address" required>
+              <span class="field__error">Address is required.</span>
+            </label>
+            <label class="field">City
+              <input type="text" name="city" placeholder="New York" autocomplete="address-level2" required>
+              <span class="field__error">City is required.</span>
+            </label>
+            <label class="field">ZIP code
+              <input type="text" name="zip" placeholder="10001" inputmode="numeric" autocomplete="postal-code" required>
+              <span class="field__error">ZIP code is required.</span>
+            </label>
+          </div>
+
+          <div class="delivery-options" role="radiogroup" aria-label="Delivery method">
+            <label>
+              <input type="radio" name="shipping" value="0" data-shipping-label="Complimentary ground" checked>
+              <span><b>Complimentary ground</b><small>3–5 business days · Free over $75</small></span>
+              <strong>Free</strong>
+            </label>
+            <label>
+              <input type="radio" name="shipping" value="12" data-shipping-label="Priority delivery">
+              <span><b>Priority delivery</b><small>1–2 business days</small></span>
+              <strong>$12</strong>
+            </label>
+          </div>
+        </div>
+
+        <div class="checkout-card">
+          <div class="checkout-card__heading">
+            <div>
+              <p class="eyebrow">03 · Payment</p>
+              <h2>Payment method.</h2>
+            </div>
+          </div>
+          <div class="payment-preview" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="field-grid">
+            <label class="field field--full">Card number
+              <input type="text" name="card" value="4242 4242 4242 4242" inputmode="numeric" autocomplete="cc-number" required>
+              <span class="field__error">Card number is required.</span>
+            </label>
+            <label class="field">Expiry
+              <input type="text" name="expiry" value="08 / 28" autocomplete="cc-exp" required>
+              <span class="field__error">Expiry is required.</span>
+            </label>
+            <label class="field">CVC
+              <input type="text" name="cvc" value="123" inputmode="numeric" autocomplete="cc-csc" required>
+              <span class="field__error">CVC is required.</span>
+            </label>
+            <label class="check-field field--full">
+              <input type="checkbox" name="billing" checked>
+              <span>Billing address is the same as shipping address.</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="checkout-actions">
+          <a class="button button--outline" href="./index.html#bestsellers">Return to shop</a>
+          <button class="button button--dark" type="submit">Place concept order</button>
+        </div>
+      </form>
+
+      <aside class="order-summary reveal" aria-labelledby="summary-title">
+        <div class="order-summary__sticky">
+          <div class="order-summary__header">
+            <div>
+              <p class="eyebrow">Order summary</p>
+              <h2 id="summary-title">Your edit</h2>
+            </div>
+            <span data-checkout-total-count>0 items</span>
+          </div>
+          <div class="checkout-items" data-checkout-items></div>
+          <form class="promo" data-promo-form>
+            <label class="sr-only" for="promo-code">Promo code</label>
+            <input id="promo-code" name="promo" type="text" placeholder="Promo code">
+            <button type="submit">Apply</button>
+          </form>
+          <div class="summary-lines">
+            <div><span>Subtotal</span><strong data-checkout-subtotal>$0</strong></div>
+            <div><span>Shipping</span><strong data-checkout-shipping>Free</strong></div>
+            <div><span>Estimated tax</span><strong data-checkout-tax>$0</strong></div>
+            <div data-discount-row hidden><span>Portfolio promo</span><strong data-checkout-discount>−$0</strong></div>
+          </div>
+          <div class="summary-total"><span>Total</span><strong data-checkout-total>$0</strong></div>
+          <div class="checkout-note">
+            <span>●</span>
+            <p>No real checkout is processed. This page showcases ecommerce UX/UI, validation and local state.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="confirmation" data-order-success hidden>
+      <div class="confirmation__card">
+        <p class="eyebrow">Order received</p>
+        <h2>Your ritual is reserved.</h2>
+        <p data-order-message>Thank you — your concept order has been placed.</p>
+        <div class="confirmation__details">
+          <div><span>Order</span><strong data-order-number>PG-0000</strong></div>
+          <div><span>Delivery</span><strong data-order-delivery>Complimentary ground</strong></div>
+        </div>
+        <a class="button button--dark" href="./index.html">Return home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer__grid">
+      <div><a class="wordmark wordmark--light" href="./index.html">PureGlow</a><p>A digital skincare concept exploring calm, considered commerce.</p></div>
+      <div><p class="footer__label">Experience</p><a href="./index.html">Homepage</a><a href="./product.html">Product page</a><a href="./case-study.html">Design story</a></div>
+      <div><p class="footer__label">Checkout UX</p><a href="#main">Order flow</a><a href="./case-study.html#accessibility">Accessibility</a><a href="./case-study.html#system">Design system</a></div>
+    </div>
+    <div class="shell footer__bottom"><p>© 2026 PureGlow concept.</p><p>Frontend-only checkout prototype.</p></div>
+  </footer>
+
+  <div class="overlay" data-overlay hidden></div>
+  <aside class="drawer" data-cart-drawer aria-hidden="true" aria-labelledby="cart-title">
+    <div class="drawer__header"><h2 id="cart-title">Your bag <span data-cart-total-count>(0)</span></h2><button type="button" data-close-drawer aria-label="Close bag">×</button></div>
+    <div class="drawer__body" data-cart-items></div>
+    <div class="drawer__footer" data-cart-footer hidden><div><span>Subtotal</span><strong data-cart-subtotal>$0</strong></div><a class="button button--dark" href="./checkout.html">Checkout</a><p>Frontend demo — no payment will be collected.</p></div>
+  </aside>
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="icon-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 9V6a3 3 0 0 1 6 0v3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  </svg>
+</body>
+</html>

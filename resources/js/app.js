@@ -29,6 +29,8 @@ const productFrom = element => {
     href: "./product.html"
   };
 };
+const formatMoney = value => `$${Math.max(0, Math.round(value))}`;
+const cartSubtotal = () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
 function showToast(message) {
   const toast = $("[data-toast]");
@@ -79,7 +81,7 @@ function renderCart() {
         <button type="button" data-remove-cart="${index}" aria-label="Remove ${item.name}">×</button>
       </article>`).join("");
   }
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = cartSubtotal();
   const footer = $("[data-cart-footer]");
   if (footer) footer.hidden = cart.length === 0;
   const subtotalEl = $("[data-cart-subtotal]");
@@ -170,7 +172,7 @@ function initGlobalUI() {
     const wishlistAdd = event.target.closest("[data-wishlist-add]");
     if (removeCart) {
       cart.splice(Number(removeCart.dataset.removeCart), 1);
-      storage.set("pureglow-cart", cart); updateCounts(); renderCart();
+      storage.set("pureglow-cart", cart); updateCounts(); renderCart(); renderCheckout();
     }
     if (removeWishlist) {
       wishlist.splice(Number(removeWishlist.dataset.removeWishlist), 1);
@@ -179,7 +181,7 @@ function initGlobalUI() {
     if (wishlistAdd) addToCart(wishlist[Number(wishlistAdd.dataset.wishlistAdd)]);
   });
 
-  $$("[data-demo-checkout], [data-demo-link]").forEach(element => element.addEventListener("click", event => {
+  $$("[data-demo-link]").forEach(element => element.addEventListener("click", event => {
     event.preventDefault();
     showToast("Concept interaction — no external action is taken");
   }));
@@ -191,6 +193,140 @@ function initGlobalUI() {
   renderCart();
   renderWishlist();
   updateCounts();
+}
+
+function renderCheckout() {
+  const checkout = $("[data-checkout]");
+  if (!checkout) return;
+
+  const items = $("[data-checkout-items]");
+  const subtotalEl = $("[data-checkout-subtotal]");
+  const shippingEl = $("[data-checkout-shipping]");
+  const taxEl = $("[data-checkout-tax]");
+  const discountEl = $("[data-checkout-discount]");
+  const totalEl = $("[data-checkout-total]");
+  const countEl = $("[data-checkout-total-count]");
+  const discountRow = $("[data-discount-row]");
+  const submit = $("[data-checkout-form] button[type='submit']");
+  const selectedShipping = $("[name='shipping']:checked");
+
+  const subtotal = cartSubtotal();
+  const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const shipping = subtotal ? (subtotal >= 75 ? Number(selectedShipping?.value || 0) : Math.max(8, Number(selectedShipping?.value || 0))) : 0;
+  const hasPromo = storage.get("pureglow-promo", null) === "GLOW10";
+  const discount = hasPromo ? subtotal * 0.1 : 0;
+  const tax = subtotal ? (subtotal - discount + shipping) * 0.0825 : 0;
+  const total = subtotal - discount + shipping + tax;
+
+  if (items) {
+    items.innerHTML = cart.length ? cart.map((item, index) => `
+      <article class="checkout-item">
+        <div class="checkout-item__image">
+          <img src="${item.image}" alt="">
+          <span>${item.quantity}</span>
+        </div>
+        <div>
+          <h3>${item.name}</h3>
+          <p>${item.category} · ${item.concern}</p>
+          <button type="button" data-remove-cart="${index}">Remove</button>
+        </div>
+        <strong>${formatMoney(item.price * item.quantity)}</strong>
+      </article>`).join("") : `
+      <div class="checkout-empty">
+        <b>Your bag is empty.</b>
+        <p>Add a formula to preview the full checkout experience.</p>
+        <a class="button button--outline button--small" href="./index.html#bestsellers">Shop essentials</a>
+      </div>`;
+  }
+
+  if (subtotalEl) subtotalEl.textContent = formatMoney(subtotal);
+  if (shippingEl) shippingEl.textContent = subtotal ? (shipping ? formatMoney(shipping) : "Free") : "—";
+  if (taxEl) taxEl.textContent = subtotal ? formatMoney(tax) : "$0";
+  if (discountEl) discountEl.textContent = `−${formatMoney(discount)}`;
+  if (discountRow) discountRow.hidden = !hasPromo;
+  if (totalEl) totalEl.textContent = formatMoney(total);
+  if (countEl) countEl.textContent = `${itemCount} ${itemCount === 1 ? "item" : "items"}`;
+  if (submit) submit.disabled = cart.length === 0;
+}
+
+function initCheckout() {
+  const checkout = $("[data-checkout]");
+  if (!checkout) return;
+
+  renderCheckout();
+
+  $$("[name='shipping']").forEach(input => input.addEventListener("change", () => {
+    renderCheckout();
+    showToast(`${input.dataset.shippingLabel} selected`);
+  }));
+
+  $$("[data-express-pay]").forEach(button => button.addEventListener("click", () => {
+    showToast(`${button.dataset.expressPay} selected — demo state only`);
+  }));
+
+  $("[data-promo-form]")?.addEventListener("submit", event => {
+    event.preventDefault();
+    const input = event.currentTarget.elements.promo;
+    const code = input.value.trim().toUpperCase();
+    if (code === "GLOW10") {
+      storage.set("pureglow-promo", "GLOW10");
+      showToast("GLOW10 applied — 10% concept discount");
+    } else if (code) {
+      storage.set("pureglow-promo", null);
+      showToast("Try GLOW10 for the portfolio promo");
+    }
+    input.value = "";
+    renderCheckout();
+  });
+
+  $("[data-checkout-form]")?.addEventListener("submit", event => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (!cart.length) {
+      showToast("Add a product before placing an order");
+      return;
+    }
+
+    let firstInvalid;
+    $$("input[required]", form).forEach(input => {
+      const invalid = !input.checkValidity() || !input.value.trim();
+      input.closest(".field")?.classList.toggle("invalid", invalid);
+      if (invalid && !firstInvalid) firstInvalid = input;
+    });
+
+    if (firstInvalid) {
+      firstInvalid.focus();
+      showToast("A few details need attention");
+      return;
+    }
+
+    const selectedShipping = $("[name='shipping']:checked");
+    const firstName = form.elements.firstName.value.trim();
+    const orderNumber = `PG-${Math.floor(1000 + Math.random() * 9000)}`;
+    storage.set("pureglow-last-order", {
+      orderNumber,
+      shipping: selectedShipping?.dataset.shippingLabel || "Complimentary ground",
+      items: cart,
+      placedAt: new Date().toISOString()
+    });
+    cart = [];
+    storage.set("pureglow-cart", cart);
+    storage.set("pureglow-promo", null);
+    updateCounts();
+    renderCart();
+    renderCheckout();
+
+    $("[data-order-number]").textContent = orderNumber;
+    $("[data-order-delivery]").textContent = selectedShipping?.dataset.shippingLabel || "Complimentary ground";
+    $("[data-order-message]").textContent = `Thank you${firstName ? `, ${firstName}` : ""} — your concept order has been placed.`;
+    checkout.hidden = true;
+    $("[data-order-success]").hidden = false;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  document.addEventListener("input", event => {
+    if (event.target.matches("[data-checkout-form] input")) event.target.closest(".field")?.classList.remove("invalid");
+  });
 }
 
 function initSearch() {
@@ -276,3 +412,4 @@ initReveal();
 initRoutine();
 initProduct();
 initForms();
+initCheckout();

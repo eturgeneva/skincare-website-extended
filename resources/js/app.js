@@ -528,6 +528,22 @@ function initProfile() {
   });
 }
 
+function initAdmin() {
+  if (document.body.dataset.page !== "admin") return;
+
+  $$("[data-admin-action]").forEach(button => button.addEventListener("click", event => {
+    event.preventDefault();
+    const label = button.textContent.trim() || "Action";
+    showToast(`${label} is a frontend demo action`);
+  }));
+
+  $$("[data-admin-save]").forEach(button => button.addEventListener("click", event => {
+    event.preventDefault();
+    storage.set("pureglow-admin-draft", { savedAt: new Date().toISOString(), page: document.title });
+    showToast("Admin draft saved locally");
+  }));
+}
+
 initGlobalUI();
 initSearch();
 initReveal();
@@ -536,3 +552,4 @@ initProduct();
 initForms();
 initCheckout();
 initProfile();
+initAdmin();

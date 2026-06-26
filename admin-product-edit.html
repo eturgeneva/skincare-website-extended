@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PureGlow admin product editing concept.">
+  <title>Product Editing — PureGlow Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./resources/css/style.css">
+  <script src="./resources/js/app.js" defer></script>
+</head>
+<body data-page="admin">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="admin-header">
+    <nav class="admin-topbar shell" aria-label="Admin navigation">
+      <a class="wordmark" href="./index.html">PureGlow</a>
+      <div class="admin-tabs">
+        <a href="./admin-dashboard.html">Dashboard</a>
+        <a class="active" href="./admin-product-edit.html">Product editing</a>
+        <a href="./admin-catalog.html">Catalog</a>
+      </div>
+      <a class="button button--outline button--small" href="./product.html">View product</a>
+    </nav>
+  </header>
+
+  <main id="main" class="admin-shell shell">
+    <section class="admin-hero reveal">
+      <div>
+        <p class="eyebrow">Product editor</p>
+        <h1>Refine the product story.</h1>
+        <p>Edit merchandising content, formula details and page modules in a polished static prototype.</p>
+      </div>
+      <button class="button button--dark" type="button" data-admin-save>Save draft</button>
+    </section>
+
+    <section class="admin-editor">
+      <form class="admin-panel admin-form reveal">
+        <div class="admin-panel__heading">
+          <div><p class="eyebrow">Core details</p><h2>Radiance Revive Serum</h2></div>
+          <span class="admin-badge">Published</span>
+        </div>
+        <div class="field-grid">
+          <label class="field field--full">Product title
+            <input type="text" value="Radiance Revive Serum">
+          </label>
+          <label class="field">Category
+            <select><option>Serum</option><option>Cleanser</option><option>Moisturizer</option></select>
+          </label>
+          <label class="field">Price
+            <input type="text" value="$58">
+          </label>
+          <label class="field field--full">Short description
+            <textarea>A lightweight Vitamin C and hyaluronic acid serum that helps brighten, hydrate and visibly even skin tone.</textarea>
+          </label>
+          <label class="field field--full">Ingredient focus
+            <textarea>Vitamin C, three weights of hyaluronic acid and antioxidant botanicals.</textarea>
+          </label>
+        </div>
+        <div class="admin-actions">
+          <button class="button button--outline" type="button" data-admin-action>Preview changes</button>
+          <button class="button button--dark" type="button" data-admin-save>Save product</button>
+        </div>
+      </form>
+
+      <aside class="admin-panel admin-preview reveal">
+        <p class="eyebrow">Live preview</p>
+        <img src="./resources/images/custom-blended-moisture-building-essence.jpg" alt="Radiance Revive Serum">
+        <h2>Radiance Revive Serum</h2>
+        <p>Brightening serum · 30 ml</p>
+        <div class="skin-tags"><span>Dullness</span><span>Dehydration</span><span>Uneven tone</span></div>
+      </aside>
+    </section>
+
+    <section class="admin-panel reveal">
+      <div class="admin-panel__heading">
+        <div><p class="eyebrow">Page modules</p><h2>Product experience blocks.</h2></div>
+        <button class="text-button" type="button" data-admin-action>Add module</button>
+      </div>
+      <div class="admin-modules">
+        <article><span>01</span><b>Hero gallery</b><p>Bottle, texture and lab imagery.</p><button type="button" data-admin-action>Edit</button></article>
+        <article><span>02</span><b>Formula accordions</b><p>Why it works, ingredients, usage and delivery.</p><button type="button" data-admin-action>Edit</button></article>
+        <article><span>03</span><b>Reviews</b><p>Community proof and testimonial blocks.</p><button type="button" data-admin-action>Edit</button></article>
+      </div>
+    </section>
+  </main>
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+</body>
+</html>

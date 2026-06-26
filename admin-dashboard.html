@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PureGlow admin dashboard concept with sales and performance metrics.">
+  <title>Admin Dashboard — PureGlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./resources/css/style.css">
+  <script src="./resources/js/app.js" defer></script>
+</head>
+<body data-page="admin">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="admin-header">
+    <nav class="admin-topbar shell" aria-label="Admin navigation">
+      <a class="wordmark" href="./index.html">PureGlow</a>
+      <div class="admin-tabs">
+        <a class="active" href="./admin-dashboard.html">Dashboard</a>
+        <a href="./admin-product-edit.html">Product editing</a>
+        <a href="./admin-catalog.html">Catalog</a>
+      </div>
+      <a class="button button--outline button--small" href="./index.html">View store</a>
+    </nav>
+  </header>
+
+  <main id="main" class="admin-shell shell">
+    <section class="admin-hero reveal">
+      <div>
+        <p class="eyebrow">Admin console · Today</p>
+        <h1>Performance at a glance.</h1>
+        <p>Frontend-only dashboard concept for ecommerce operations, merchandising and UX portfolio storytelling.</p>
+      </div>
+      <div class="admin-status">
+        <span>● Store healthy</span>
+        <b>Last synced locally</b>
+        <small>June 26, 2026 · Demo data</small>
+      </div>
+    </section>
+
+    <section class="admin-metrics reveal" aria-label="Sales metrics">
+      <article><span>Revenue</span><strong>$18.4k</strong><p>+14.8% vs last week</p></article>
+      <article><span>Orders</span><strong>326</strong><p>+8.2% conversion lift</p></article>
+      <article><span>Average order</span><strong>$74</strong><p>Routine bundles performing well</p></article>
+      <article><span>Return rate</span><strong>1.8%</strong><p>Below skincare benchmark</p></article>
+    </section>
+
+    <section class="admin-grid">
+      <article class="admin-panel admin-panel--wide reveal">
+        <div class="admin-panel__heading">
+          <div><p class="eyebrow">Sales performance</p><h2>Weekly revenue trend.</h2></div>
+          <button class="text-button" type="button" data-admin-action>Export CSV</button>
+        </div>
+        <div class="admin-chart" aria-label="Bar chart showing revenue by day">
+          <span style="--h:42%"><b>Mon</b></span>
+          <span style="--h:58%"><b>Tue</b></span>
+          <span style="--h:48%"><b>Wed</b></span>
+          <span style="--h:76%"><b>Thu</b></span>
+          <span style="--h:66%"><b>Fri</b></span>
+          <span style="--h:88%"><b>Sat</b></span>
+          <span style="--h:72%"><b>Sun</b></span>
+        </div>
+      </article>
+
+      <article class="admin-panel reveal">
+        <div class="admin-panel__heading">
+          <div><p class="eyebrow">Conversion</p><h2>Checkout health.</h2></div>
+        </div>
+        <div class="admin-funnel">
+          <div><span>Product views</span><b>4,820</b></div>
+          <div><span>Added to bag</span><b>1,146</b></div>
+          <div><span>Reached checkout</span><b>684</b></div>
+          <div><span>Placed order</span><b>326</b></div>
+        </div>
+      </article>
+
+      <article class="admin-panel reveal">
+        <div class="admin-panel__heading">
+          <div><p class="eyebrow">Top products</p><h2>Best sellers.</h2></div>
+        </div>
+        <div class="admin-list">
+          <div><img src="./resources/images/custom-blended-moisture-building-essence.jpg" alt=""><span>Radiance Revive Serum</span><b>$8.7k</b></div>
+          <div><img src="./resources/images/custom-blended-conditioning-cream.jpg" alt=""><span>Radiance Revive Cream</span><b>$5.2k</b></div>
+          <div><img src="./resources/images/custom-blended-milk-cleanser.jpg" alt=""><span>Radiance Revive Cleanser</span><b>$4.5k</b></div>
+        </div>
+      </article>
+    </section>
+  </main>
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+</body>
+</html>

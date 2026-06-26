@@ -553,6 +553,12 @@ function initAdmin() {
     showToast(`${label} is a frontend demo action`);
   }));
 
+  $$("[data-admin-export]").forEach(button => button.addEventListener("click", event => {
+    event.preventDefault();
+    const label = button.textContent.trim() || "Export";
+    showToast(`${label} prepared as demo data`);
+  }));
+
   $$("[data-admin-save]").forEach(button => button.addEventListener("click", event => {
     event.preventDefault();
     storage.set("pureglow-admin-draft", { savedAt: new Date().toISOString(), page: document.title });

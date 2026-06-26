@@ -19,6 +19,11 @@
       <div class="admin-tabs">
         <a class="active" href="./admin-dashboard.html">Dashboard</a>
         <a href="./admin-catalog.html">Catalog</a>
+        <a href="#" data-admin-action>Orders</a>
+        <a href="#" data-admin-action>Customers</a>
+        <a href="#" data-admin-action>Promotions</a>
+        <a href="#" data-admin-action>Analytics</a>
+        <a href="#" data-admin-action>Settings</a>
       </div>
       <a class="button button--outline button--small" href="./index.html">View store</a>
     </nav>
@@ -31,10 +36,16 @@
         <h1>Performance at a glance.</h1>
         <p>Frontend-only dashboard concept for ecommerce operations, merchandising and UX portfolio storytelling.</p>
       </div>
-      <div class="admin-status">
-        <span>● Store healthy</span>
-        <b>Last synced locally</b>
-        <small>June 26, 2026 · Demo data</small>
+      <div class="admin-hero__aside">
+        <div class="admin-export-actions">
+          <button class="button button--dark button--small" type="button" data-admin-export="sales">Export sales</button>
+          <button class="button button--outline button--small" type="button" data-admin-export="orders">Export orders</button>
+        </div>
+        <div class="admin-status">
+          <span>● Store healthy</span>
+          <b>Last synced locally</b>
+          <small>June 26, 2026 · Demo data</small>
+        </div>
       </div>
     </section>
 
